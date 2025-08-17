@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
+  <info>
+    <title>Custom Harvard With Journal Abbr</title>
+    <id>http://www.zotero.org/styles/custom-harvard-with-journal-abbr</id>
+    <link href="http://www.zotero.org/styles/custom-harvard-with-journal-abbr" rel="self"/>
+    <author>
+      <name>LiangchaoDeng</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <updated>2024-12-01T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">
+      This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License
+    </rights>
+  </info>
+
+  <!-- 定义作者简写宏 -->
+  <macro name="author-short">
+    <names variable="author" et-al-min="2" et-al-use-first="1" delimiter=", " delimiter-precedes-et-al="never">
+      <name form="short" name-as-sort-order="last" initialize-with=""/>
+    </names>
+  </macro>
+
+  <!-- 定义年份宏 -->
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+
+  <!-- 定义引用条目宏 -->
+  <macro name="citation-entry">
+    <group delimiter=", ">
+      <text macro="author-short"/>
+      <text variable="container-title-short"/>
+      <text macro="issued"/>
+    </group>
+  </macro>
+
+  <!-- 正文中的引用格式 -->
+  <citation et-al-min="2" et-al-use-first="1" disambiguate-add-givenname="false" disambiguate-add-year-suffix="true" collapse="year" cite-group-delimiter=", ">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="descending"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <text macro="citation-entry"/>
+    </layout>
+  </citation>
+
+  <!-- 参考文献列表格式 -->
+  <bibliography hanging-indent="true" entry-spacing="0" line-spacing="1" et-al-min="2" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="descending"/>
+    </sort>
+    <layout>
+      <text prefix="(" suffix=")." macro="citation-entry"/>
+    </layout>
+  </bibliography>
+</style>
