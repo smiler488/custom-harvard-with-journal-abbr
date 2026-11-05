@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
+  <info>
+    <title>Custom Harvard With Journal Abbr</title>
+    <id>http://www.zotero.org/styles/custom-harvard-with-journal-abbr</id>
+    <link href="http://www.zotero.org/styles/custom-harvard-with-journal-abbr" rel="self"/>
+    <link href="https://github.com/smiler488/custom-harvard-with-journal-abbr" rel="documentation"/>
+    <author>
+      <name>Liangchao Deng</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <summary>Short citations for slides: (Author, Journal abbreviation, Year).</summary>
+    <updated>2026-11-05T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+
+  <!-- Family names: "Deng", "Deng & Tang", "Deng et al." -->
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="symbol" delimiter=", " delimiter-precedes-last="never"/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title" form="short" font-style="italic"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <!-- Journal abbreviation; falls back to the full title when the
+       "Journal Abbr" field is empty -->
+  <macro name="journal">
+    <text variable="container-title" form="short"/>
+  </macro>
+
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="citation-entry">
+    <group delimiter=", ">
+      <text macro="author-short"/>
+      <text macro="journal"/>
+      <group>
+        <text macro="issued"/>
+        <text variable="year-suffix"/>
+      </group>
+    </group>
+  </macro>
+
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="issued"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <text macro="citation-entry"/>
+    </layout>
+  </citation>
+
+  <!-- Bibliography: the same short form, one per line, e.g. for a
+       reference slide made with "Create Bibliography from Items" -->
+  <bibliography et-al-min="3" et-al-use-first="1" entry-spacing="0">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="issued"/>
+    </sort>
+    <layout prefix="(" suffix=").">
+      <text macro="citation-entry"/>
+    </layout>
+  </bibliography>
+</style>
