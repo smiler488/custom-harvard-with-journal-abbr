@@ -1,66 +1,55 @@
-# Custom Harvard With Journal Abbr (CSL)
+# Custom Harvard With Journal Abbr
 
-A Zotero/Mendeley CSL style that formats in-text citations as (Author, Journal Abbr, Year) and uses journal abbreviations.
-# Custom Zotero Citation Style for Academic Presentations
+English | [中文](README.zh-CN.md)
 
-This tutorial shows how to create, install, and configure a **custom Zotero citation style** for generating concise, standardized references in PowerPoint or Beamer presentations.  
-It is based on a *Harvard-style format with journal abbreviations*, producing outputs such as:
+A Zotero citation style (CSL) for slides. Dragging a paper from Zotero into PowerPoint, Keynote or a Beamer source gives a short citation with the journal abbreviation:
 
-> (Deng et al., Plant Phenomics, 2025)
-
-This format keeps your slides clean and professional while ensuring consistency with academic citation standards.
-
----
-
-## 1. Overview
-
-When preparing academic presentations, full-length reference lists can clutter your slides.  
-A compact citation format like `(Author, Journal Abbr, Year)` conveys all essential information clearly and efficiently.
-
-This tutorial introduces a custom **CSL (Citation Style Language)** file you can import into Zotero to automatically generate citations in this format.
-
-
----
-
-## 2. CSL Template Code
-
-Save the following XML code as **`custom-harvard-with-journal-abbr.csl`** on your computer:
-
-
----
-
-## 3.How to Install and Configure
-
-Follow these steps to install and enable the custom style in Zotero:
-	1.	Open Zotero
-	2.	Go to Preferences → Cite → Style Manager
-	3.	Click “+” → Add Style…
-	4.	Select the file custom-harvard-with-journal-abbr.csl
-	5.	The new style will appear in the list as
-Custom Harvard With Journal Abbr
-	6.	To configure for exporting:
-      Go to Preferences → Export → Item Format, Select 'Custom Harvard With Journal Abbr'
-      
-
----
-
-## 4. How to Use in PowerPoint or Beamer
-
-After setup, Zotero allows you to insert references directly into slides:
-	1.	In Zotero, select one or more items.
-	2.	Drag the selected items directly into a PowerPoint.
-	3.	Zotero will automatically insert formatted citations, e.g.:
 ```
 (Deng et al., Plant Phenomics, 2025)
-```
-For multiple references:
-```
-(Tang et al., J. Integr. Agric., 2025).
-(Deng et al., Plant Phenomics, 2025).
+(Tang & Zhou, J. Integr. Agric., 2025)
+(Smith, Field Crops Research, 2023)
 ```
 
-- Style ID: http://www.zotero.org/styles/custom-harvard-with-journal-abbr
-- Author: Liangchao Deng (Shihezi University / CAS-CEMPS)
-- Style Name: Custom Harvard With Journal Abbr
-- License: CC BY-SA 3.0￼
-- Purpose: To streamline citation insertion and improve presentation aesthetics in academic contexts.
+In talks I like the audience to see where a result was published without a reference slide at the end. Author, journal and year in one short bracket does that, and Zotero's quick copy makes it a drag and drop.
+
+## Install
+
+1. Download [`custom-harvard-with-journal-abbr.csl`](custom-harvard-with-journal-abbr.csl) (open the file, then **Download raw file**).
+2. Zotero → **Settings → Cite → Styles → +**, pick the file. "Custom Harvard With Journal Abbr" appears in the list.
+3. Zotero → **Settings → Export → Item Format**, choose "Custom Harvard With Journal Abbr".
+
+## Use
+
+- **Drag and drop**: drag one or more items from Zotero into a text box. Several items give `(A, J1, 2024; B, J2, 2025)`.
+- **Keyboard**: select items and press Ctrl+Shift+C (macOS: Cmd+Shift+C), then paste.
+- **Reference slide**: right-click → *Create Bibliography from Items* gives one bracket per line, sorted by author.
+
+## Format rules
+
+| Situation | Output |
+|---|---|
+| one author | `(Smith, …)` |
+| two authors | `(Tang & Zhou, …)` |
+| three or more | `(Deng et al., …)` |
+| no "Journal Abbr" in Zotero | full journal title |
+| no author | editor, then short title |
+| no date | `n.d.` |
+| same author and year | `2025a`, `2025b` |
+
+The abbreviation comes from the **Journal Abbr** field of each item. Zotero fills it for many journals on import. For the rest, type it once, for example `J. Integr. Agric.`.
+
+To get `et al.` for two authors as well (the version before this revision did that), change both `et-al-min="3"` to `et-al-min="2"` in the file.
+
+## Changes in this revision
+
+- The sort keys referred to a macro called `author` that does not exist, which made the style invalid CSL. Bibliography order was effectively random.
+- Items without a Journal Abbr lost the journal entirely. They now fall back to the full title.
+- Two-author papers are written `A & B` instead of `A et al.`.
+- Year collapsing produced `(Deng et al., Plant Phenomics, 2025a, Plant Phenomics, 2025b)`. Each citation is now complete.
+- The file name no longer contains spaces. Comments are in English and the author name is fixed.
+
+Tested by rendering with citeproc-js, the engine Zotero uses.
+
+## License
+
+The style file is CC BY-SA 3.0, like all styles in the Zotero style repository (stated inside the file). The README and other files are MIT, see [LICENSE](LICENSE). Liangchao Deng (邓良超).
