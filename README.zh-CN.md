@@ -2,6 +2,7 @@
 
 [English](README.md) | 中文
 
+[![CI](https://github.com/smiler488/custom-harvard-with-journal-abbr/actions/workflows/test.yml/badge.svg)](https://github.com/smiler488/custom-harvard-with-journal-abbr/actions/workflows/test.yml) ![License: CC BY-SA 3.0 (style) / MIT (rest)](https://img.shields.io/badge/license-CC_BY--SA_3.0_%2F_MIT-blue.svg) ![CSL 1.0](https://img.shields.io/badge/CSL_1.0-informational)
 一个给幻灯片用的 Zotero 引用样式（CSL）。从 Zotero 把文献拖进 PowerPoint、Keynote 或 Beamer 源文件，就会得到一个带期刊缩写的简短引用：
 
 ```

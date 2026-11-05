@@ -2,6 +2,7 @@
 
 English | [中文](README.zh-CN.md)
 
+[![CI](https://github.com/smiler488/custom-harvard-with-journal-abbr/actions/workflows/test.yml/badge.svg)](https://github.com/smiler488/custom-harvard-with-journal-abbr/actions/workflows/test.yml) ![License: CC BY-SA 3.0 (style) / MIT (rest)](https://img.shields.io/badge/license-CC_BY--SA_3.0_%2F_MIT-blue.svg) ![CSL 1.0](https://img.shields.io/badge/CSL_1.0-informational)
 A Zotero citation style (CSL) for slides. Dragging a paper from Zotero into PowerPoint, Keynote or a Beamer source gives a short citation with the journal abbreviation:
 
 ```
