@@ -1,0 +1,8 @@
+{
+  "name": "custom-harvard-with-journal-abbr",
+  "private": true,
+  "description": "Render tests for the CSL style with citeproc-js",
+  "scripts": { "test": "node --test" },
+  "devDependencies": { "citeproc": "^2.4.63" },
+  "license": "MIT"
+}
